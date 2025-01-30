@@ -8,7 +8,6 @@ from bot.handler import private_handler_router
 
 load_dotenv()
 
-# pip install python-dotenv
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 bot = Bot(token=BOT_TOKEN, )
 dp = Dispatcher(storage=MemoryStorage())
