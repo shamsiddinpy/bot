@@ -7,12 +7,13 @@ from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
+from bot.handler.buttons.inline import main_phone
 from bot.handler.state.main_state import MainStatesGroup
 from bot.handler.utls.main_jshshir_filter import is_jshshir_number_filter
 from config.base import session
 from config.model import TelegramUser
 
-API_URL = "https://dev-gateway.railwayinfra.uz/api/user/jshshir/{}?project=railmap"
+API_URL = os.environ.get("API_URL")
 API_TOKEN = os.getenv("API_TOKEN")
 
 handler_start_router = Router()
@@ -39,17 +40,6 @@ async def start_handler(msg: Message, state: FSMContext):
         session.commit()
     await state.set_state(MainStatesGroup.main_jshshir)
     await msg.answer("JSHSHIR Raqamingizni kiriting...")
-
-
-@handler_start_router.message(MainStatesGroup.main_jshshir)
-async def main_handler(msg: Message, state: FSMContext):
-    jshshir = msg.text.strip()
-    if not is_jshshir_number_filter(jshshir):
-        await msg.answer("❌ JShShIR noto‘g‘ri! U 14 xonali va faqat raqamlardan iborat bo‘lishi kerak.")
-        return
-    else:
-        await state.set_state(MainStatesGroup.main_phone)
-        await msg.answer("Telfon raqamingizni kiriting...", )
 
     # headers = {
     #     "Authorization": f"Bearer {API_TOKEN}"
