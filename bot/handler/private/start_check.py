@@ -29,11 +29,9 @@ async def main_handler(msg: Message, state: FSMContext):
         await msg.answer("Telfon raqamingizni kiriting...", reply_markup=main_phone())
 
 
-
-
 @star_check_router.message(MainStatesGroup.main_phone, F.content_type == ContentType.CONTACT)
 async def main_handler(msg: Message, state: FSMContext):
-    formatted_phone = msg.contact.phone_number
-    success, message = await verify_phone_number(formatted_phone)
-
+    phone_number = msg.contact.phone_number
+    access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDg2LCJpYXQiOjE3MzgzMDI5MjEsImV4cCI6MTczODM4OTMyMX0.v-6t99or0stHlm6bJsTi1mibAtb7nY0MfEFY2XiBd74"  # O'zingizning access tokeningizni kiriting
+    success, message = await verify_phone_number(phone_number, access_token)
     await msg.answer(message)
