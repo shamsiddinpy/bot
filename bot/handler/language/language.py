@@ -1,0 +1,28 @@
+MESSAGES = {
+    'uz': {
+        'select_language': '🇺🇿 Tilni tanlang',
+        'enter_jshshir': '🆔 JShShIR raqamingizni kiriting',
+        'enter_phone': '📱 Telefon raqamingizni kiriting',
+        'wrong_jshshir': '❌ JShShIR noto\'g\'ri! U 14 xonali va faqat raqamlardan iborat bo\'lishi kerak.',
+        'wrong_phone': '❌ Telefon raqami noto\'g\'ri! Namuna: (XX)-XXX-XX-XX',
+        'data_not_found': '❌ Ma\'lumotlar topilmadi!',
+        'technical_error': '⚠️ Texnik nosozlik! Iltimos, keyinroq urinib ko\'ring.',
+        'user_found': '✅ Foydalanuvchi ma\'lumotlari:',
+        'personal_info': '👤 SHAXSIY MA\'LUMOTLAR',
+        'address_info': '📍 MANZIL MA\'LUMOTLARI',
+        'work_info': '💼 ISH MA\'LUMOTLARI'
+    },
+    'ru': {
+        'select_language': '🇺🇿 Тилни танланг',
+        'enter_jshshir': '🆔 ЖШШИР рақамингизни киритинг',
+        'enter_phone': '📱 Телефон рақамингизни киритинг',
+        'wrong_jshshir': '❌ ЖШШИР ното\ъг\ъри! У 14 хонали ва фақат рақамлардан иборат бо\ълиши керак.',
+        'wrong_phone': '❌ Телефон рақами ното\ъг\ъри! Намуна: (ХХ)-ХХХ-ХХ-ХХ',
+        'data_not_found': '❌ Ма\ълумотлар топилмади!',
+        'technical_error': '⚠️ Техник носозлик! Илтимос, кейинроқ уриниб ко\ъринг..',
+        'user_found': '✅ Фойдаланувчи ма\ълумотлари:',
+        'personal_info': '👤 ШАХСИЙ МА\ъЛУМОТЛАР',
+        'address_info': '📍 МАНЗИЛ МА\ъЛУМОТЛАРИ',
+        'work_info': '💼 ИШ МА\ъЛУМОТЛАРИ'
+    }
+}

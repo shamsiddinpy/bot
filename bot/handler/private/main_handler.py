@@ -1,15 +1,12 @@
 import logging
 import os
 
-import aiohttp
 from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from bot.handler.buttons.inline import main_phone
 from bot.handler.state.main_state import MainStatesGroup
-from bot.handler.utls.main_jshshir_filter import is_jshshir_number_filter
 from config.base import session
 from config.model import TelegramUser
 
