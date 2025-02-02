@@ -1,20 +1,15 @@
-import logging
-import os
-
 from aiogram import Router
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
+from bot.handler.buttons.inline import language_btn
+from bot.handler.language.language import MESSAGES
 from bot.handler.state.main_state import MainStatesGroup
 from config.base import session
 from config.model import TelegramUser
 
-API_URL = os.environ.get("API_URL")
-API_TOKEN = os.getenv("API_TOKEN")
-
 handler_start_router = Router()
-logging.basicConfig(level=logging.INFO)
 
 
 @handler_start_router.message(CommandStart())
@@ -31,9 +26,26 @@ async def start_handler(msg: Message, state: FSMContext):
             username=user_id,
             first_name=first_name,
             last_name=last_name,
-
         )
         session.add(new_user)
         session.commit()
+
+    await state.set_state(MainStatesGroup.select_language)
+    await msg.answer(
+        text=MESSAGES['uz']['select_language'],
+        reply_markup=language_btn()
+    )
+
+
+@handler_start_router.callback_query(lambda c: c.data in ['uzbek_btn', 'узбек_btn'])
+async def start_callback_handler(c: CallbackQuery, state: FSMContext):
+    language = 'uz' if c.data == 'uzbek_btn' else 'уз'
+    telegram_id = c.from_user.id
+    user = session.query(TelegramUser).filter(TelegramUser.telegram_id == telegram_id).first()
+    if not user:
+        user.language_code = language
+        session.commit()
+    await state.update_data(language=language)
     await state.set_state(MainStatesGroup.main_jshshir)
-    await msg.answer("JSHSHIR Raqamingizni kiriting...")
+    await c.message.answer(MESSAGES[language]['enter_jshshir'])
+    await c.answer()

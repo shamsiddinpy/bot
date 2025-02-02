@@ -12,7 +12,7 @@ MESSAGES = {
         'address_info': '📍 MANZIL MA\'LUMOTLARI',
         'work_info': '💼 ISH MA\'LUMOTLARI'
     },
-    'ru': {
+    'уз': {
         'select_language': '🇺🇿 Тилни танланг',
         'enter_jshshir': '🆔 ЖШШИР рақамингизни киритинг',
         'enter_phone': '📱 Телефон рақамингизни киритинг',
