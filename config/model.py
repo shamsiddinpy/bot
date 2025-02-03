@@ -12,4 +12,4 @@ class TelegramUser(AbstractClass):
     username: Mapped[str] = mapped_column(String(50), nullable=True)
     last_name: Mapped[str] = mapped_column(String(30), nullable=True)
     first_name: Mapped[str] = mapped_column(String(30), nullable=True)
-    language_code: Mapped[str] = mapped_column(String(3), nullable=True, default='uz')
+    language_code: Mapped[str] = mapped_column(String(6), nullable=True, default='uz')

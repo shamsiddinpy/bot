@@ -1,6 +1,7 @@
 import json
 import os
 from asyncio.log import logger
+from pyexpat.errors import messages
 from typing import Tuple
 
 from aiohttp import ClientSession
@@ -29,13 +30,13 @@ def format_positions(positions_str: str) -> str:
 
 async def format_user_data(data: dict) -> str:
     if not data:
-        return "Ma'lumot topilmadi"
+        return "📌 *Ma'lumot topilmadi*"
 
     sections = [
-        "👤 SHAXSIY MA'LUMOTLAR",
-        f"To'liq ism: {data.get('fullname')}\n",
-        f"Telefon: {data.get('phone')}\n",
-        "\n💼 ISH MA'LUMOTLARI\n"
+        "*👤 SHAXSIY MA'LUMOTLAR*",
+        f"*To'liq ism:* `{data.get('fullname', '-')}`",
+        f"*Telefon:* `{data.get('phone', '-')}`",
+        "\n*💼 ISH MA'LUMOTLARI*\n"
     ]
 
     positions = format_positions(data.get('positions', '[]'))

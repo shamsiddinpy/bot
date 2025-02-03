@@ -24,18 +24,15 @@ def language_btn():
     )
 
 
-def main_btn(lang: Optional[str] = 'uzbek') -> ReplyKeyboardMarkup:
-    if lang is None or lang not in MESSAGES:
-        lang = 'uzbek'
-
+def main_btn1(lang: Optional[str] = 'Uzbek') -> ReplyKeyboardMarkup:
+    lang = lang if lang in MESSAGES else 'Uzbek'
     text_btn = MESSAGES[lang]
-    print(text_btn)
+
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=text_btn['computer_literacy'])],  # Removed request_contact
-            [KeyboardButton(text=text_btn['sample_of_tests']),
-             KeyboardButton(text=text_btn['profile_user'])],
-            [KeyboardButton(text=text_btn['back'])],
+            [KeyboardButton(text=text_btn['computer_literacy'])],
+            [KeyboardButton(text=text_btn['sample_of_tests']), KeyboardButton(text=text_btn['profile_user'])],
+            [KeyboardButton(text=text_btn['back']), KeyboardButton(text=text_btn['language_choose'])],
         ],
         resize_keyboard=True
     )
