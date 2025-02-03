@@ -5,9 +5,10 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMar
 from bot.handler.language.language import MESSAGES
 
 
-def main_phone():
+def main_phone(lang: str = 'Uzbek'):
+    text = "📞 Телефон рақамни юбориш" if lang == 'Uz' else "📞 Telefon raqamni yuborish"
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text="📞 Телефон рақамни юбориш", request_contact=True)]],
+        keyboard=[[KeyboardButton(text=text, request_contact=True)]],
         resize_keyboard=True,
         one_time_keyboard=True
     )
@@ -31,8 +32,10 @@ def main_btn1(lang: Optional[str] = 'Uzbek') -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text=text_btn['computer_literacy'])],
-            [KeyboardButton(text=text_btn['sample_of_tests']), KeyboardButton(text=text_btn['profile_user'])],
-            [KeyboardButton(text=text_btn['back']), KeyboardButton(text=text_btn['language_choose'])],
+            [KeyboardButton(text=text_btn['sample_of_tests']),
+             KeyboardButton(text=text_btn['profile_user'])],
+            [KeyboardButton(text=text_btn['back']),
+             KeyboardButton(text=text_btn['language_choose'])],
         ],
         resize_keyboard=True
     )
