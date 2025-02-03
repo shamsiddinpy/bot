@@ -5,7 +5,7 @@ from aiogram import Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, ContentType
 from bot.handler.language.language import MESSAGES
-from bot.handler.buttons.inline import main_phone
+from bot.handler.buttons.inline import main_phone, language_btn, main_btn
 from bot.handler.state.main_state import MainStatesGroup
 from bot.handler.utls.main_jshshir_filter import is_jshshir_number_filter, format_phone_number, normalize_phone
 from bot.handler.utls.verify_phone_number import verify_phone_number
@@ -39,7 +39,7 @@ async def main_handler(msg: Message, state: FSMContext):
 @star_check_router.message(MainStatesGroup.main_phone, F.content_type == ContentType.CONTACT)
 async def handle_contact(msg: Message, state: FSMContext):
     state_data = await state.get_data()
-    language = state_data.get('language', 'uz')
+    language = state_data.get('lang')
     jshshir = state_data.get('jshshir')
 
     phone_number = normalize_phone(msg.contact.phone_number)
@@ -51,7 +51,7 @@ async def handle_contact(msg: Message, state: FSMContext):
         return
 
     success, message = result
-    await msg.answer(message)
+    await msg.answer(message,reply_markup=main_btn(lang=language))
 
 
 @star_check_router.message(MainStatesGroup.main_phone)
@@ -71,6 +71,7 @@ async def handle_phone_text(msg: Message, state: FSMContext):
     if result is None:
         await msg.answer(MESSAGES[language]['error'])
         return
-
     success, message = result
-    await msg.answer(message)
+    await msg.answer(message, reply_markup=main_phone())
+
+

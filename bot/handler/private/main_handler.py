@@ -3,7 +3,7 @@ from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 
-from bot.handler.buttons.inline import language_btn
+from bot.handler.buttons.inline import language_btn, main_btn
 from bot.handler.language.language import MESSAGES
 from bot.handler.state.main_state import MainStatesGroup
 from config.base import session
@@ -31,15 +31,30 @@ async def start_handler(msg: Message, state: FSMContext):
         session.commit()
 
     await state.set_state(MainStatesGroup.select_language)
-    await msg.answer(
-        text=MESSAGES['uz']['select_language'],
-        reply_markup=language_btn()
-    )
+    await msg.answer("Tilni tanlang", reply_markup=language_btn())
+
+
+@handler_start_router.message(lambda msg: msg.text in ('Uzbek', 'Uzbek(узбек)'), MainStatesGroup.select_language)
+async def language_handler(msg: Message, state: FSMContext):
+    lang = msg.text.split()[1]
+    state_data = await state.get_data()
+    state_data.update({"language": lang})
+    await state.update_data(state_data)
+    await msg.answer(MESSAGES[lang]['language_choose'], reply_markup=main_btn(lang))
+
+
+@handler_start_router.message(lambda msg: msg.text == MESSAGES['Uzbek']['language_choose'])
+@handler_start_router.message(lambda msg: msg.text == MESSAGES['Uz']['language_choose'])
+async def language_choose_handler(msg: Message, state: FSMContext):
+    state_data = await state.get_data()
+    lang = state_data.get('lang')
+    await msg.answer(MainStatesGroup.select_language)
+    await msg.answer(MESSAGES[lang][''], reply_markup=language_btn())
 
 
 @handler_start_router.callback_query(lambda c: c.data in ['uzbek_btn', 'узбек_btn'])
 async def start_callback_handler(c: CallbackQuery, state: FSMContext):
-    language = 'uz' if c.data == 'uzbek_btn' else 'уз'
+    language = 'Uzbek' if c.data == 'uzbek_btn' else 'Uz'
     telegram_id = c.from_user.id
     user = session.query(TelegramUser).filter(TelegramUser.telegram_id == telegram_id).first()
     if not user:

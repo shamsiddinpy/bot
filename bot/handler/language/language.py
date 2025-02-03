@@ -1,5 +1,5 @@
 MESSAGES = {
-    'uz': {
+    'Uzbek': {
         'select_language': '🇺🇿 Tilni tanlang',
         'enter_jshshir': '🆔 JShShIR raqamingizni kiriting',
         'enter_phone': '📱 Telefon raqamingizni kiriting',
@@ -10,9 +10,16 @@ MESSAGES = {
         'user_found': '✅ Foydalanuvchi ma\'lumotlari:',
         'personal_info': '👤 SHAXSIY MA\'LUMOTLAR',
         'address_info': '📍 MANZIL MA\'LUMOTLARI',
-        'work_info': '💼 ISH MA\'LUMOTLARI'
+        'work_info': '💼 ISH MA\'LUMOTLARI',
+        'computer_literacy': "🧑‍💻 Kompyuter savodxonligi darslari",
+        'sample_of_tests': 'Testlardan na’muna',
+        'language_choose': "Tilni tanlang",
+        'profile_user': '👤 Profil',
+        'language_change': 'Til o‘zgartirish',
+        'back': '⬅️ Chiqish',
+
     },
-    'уз': {
+    'Uz': {
         'select_language': '🇺🇿 Тилни танланг',
         'enter_jshshir': '🆔 ЖШШИР рақамингизни киритинг',
         'enter_phone': '📱 Телефон рақамингизни киритинг',
@@ -23,6 +30,12 @@ MESSAGES = {
         'user_found': '✅ Фойдаланувчи ма\ълумотлари:',
         'personal_info': '👤 ШАХСИЙ МА\ъЛУМОТЛАР',
         'address_info': '📍 МАНЗИЛ МА\ъЛУМОТЛАРИ',
-        'work_info': '💼 ИШ МА\ъЛУМОТЛАРИ'
+        'work_info': '💼 ИШ МА\ъЛУМОТЛАРИ',
+        'computer_literacy': "🧑‍💻 Компьютер саводхонлиги дарслари",
+        'sample_of_tests': 'Тестлардан наъмуна',
+        'language_choose': "Тилни танланг",
+        'profile_user': '👤 Профил',
+        'language_change': 'Тил ўзгартириш',
+        'back': '⬅️ Чиқиш',
     }
 }

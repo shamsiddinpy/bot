@@ -66,7 +66,7 @@ async def verify_phone_number(jshshir: str, phone: str) -> Tuple[bool, str]:
                     if user_data:
                         api_phone = normalize_phone(user_data.get('phone', ''))
                         if normalized_input_phone != api_phone:
-                            return False, "❌ Kiritilgan telefon raqami ushbu JSHSHIR egasining telefon raqamiga mos kelmaydi!"
+                            return False, "❌ Kiritilgan telefon raqami ushbu JSHSHIR egasining  raqamiga mos kelmaydi!"
                         formatted_message = await format_user_data(user_data)
                         return True, f"✅ Foydalanuvchi ma'lumotlari topildi:\n\n{formatted_message}"
                     else:
