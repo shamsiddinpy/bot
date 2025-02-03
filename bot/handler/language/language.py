@@ -1,8 +1,8 @@
 MESSAGES = {
     'Uzbek': {
         'select_language': '🇺🇿 Tilni tanlang',
-        'enter_jshshir': '🆔 JShShIR raqamingizni kiriting',
-        'enter_phone': '📱 Telefon raqamingizni kiriting',
+        'enter_jshshir': '🆔 JShShIR raqamingizni yuborish',
+        'enter_phone': '📱 Telefon raqamingizni yuborish',
         'wrong_jshshir': '❌ JShShIR noto\'g\'ri! U 14 xonali va faqat raqamlardan iborat bo\'lishi kerak.',
         'wrong_phone': '❌ Telefon raqami noto\'g\'ri! Namuna: (XX)-XXX-XX-XX',
         'data_not_found': '❌ Ma\'lumotlar topilmadi!',
@@ -21,8 +21,8 @@ MESSAGES = {
     },
     'Uz': {
         'select_language': '🇺🇿 Тилни танланг',
-        'enter_jshshir': '🆔 ЖШШИР рақамингизни киритинг',
-        'enter_phone': '📱 Телефон рақамингизни киритинг',
+        'enter_jshshir': '🆔 ЖШШИР рақамингизни юбориш',
+        'enter_phone': '📱 Телефон рақамингизни юбориш',
         'wrong_jshshir': '❌ ЖШШИР ното\ъг\ъри! У 14 хонали ва фақат рақамлардан иборат бо\ълиши керак.',
         'wrong_phone': '❌ Телефон рақами ното\ъг\ъри! Намуна: (ХХ)-ХХХ-ХХ-ХХ',
         'data_not_found': '❌ Ма\ълумотлар топилмади!',
